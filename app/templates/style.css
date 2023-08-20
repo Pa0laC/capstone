@@ -1,0 +1,43 @@
+<style>
+
+#p_top {
+  background-color:blue
+  font-weight:bold
+}
+
+.title { font-size: 44px;
+    font-family: "Lucida Console", "Courier New", monospace;}
+
+.button {
+    border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  background-color: #4CAF50;
+}
+    
+   
+.center {
+   
+text-align:center}
+
+body {
+
+  margin-left:20px;
+  margin-right:20px;
+  border: solid BLACK 2px;
+  background-color: lightblue;
+  padding:10px;
+}
+
+
+a {
+  text-decoration:none;
+}
+
+
+
+</style>
