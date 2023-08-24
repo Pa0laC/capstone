@@ -1,10 +1,3 @@
-[//]: # (Image References)
-
-[image1]: ./home.png "Home Page"
-[image2]: ./go.png "Human Output"
-[image3]: ./go_bad_input.png "Bad Output"
-[image4]: ./go_dog.png "Dog Output"
-
 ### Table of Contents
 
 1. [Project Motivation](#motivation)
@@ -21,11 +14,10 @@ The primary aim of this project was to learn how to use a neural network to buil
 The classifier built was trained to recognize a human or a dog on an image, and predict the dog breed it most resembles. To do this, we first tested a neural network built from scratch before deploying a more complex Convolutional Neural Networks (CNN) that uses transfer learning. The pre-trained model used was an Inception V3 mode.
 
 The web application was then deployed onto flask. This is what it looked like and what it produced:
-
-![Home Page][image1]
-![image2] [Human Output]
-![image3][Bad Output]
-![image4][Dog Output]
+![Sample home](./home.png)
+![Sample dog output](./go_dog.png)
+![Sample human output](./go.png)
+![Sample Bad Output](./go_bad_input.png)
 
 
 ## Instructions <a name="Instructions"></a>
