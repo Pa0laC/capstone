@@ -9,9 +9,9 @@
 
 ## Project Motivation <a name="motivation"></a>
 
-The primary aim of this project was to learn how to use a neural network to build a classifier. However, this project was also an opportunity to use Flask for the first time, and build a web application that displays the output of the classifier.
+The primary aim of this project was to learn how to use a neural network to build a classifier. By testing out different techniques, the advantages and challenges of each could be weighed. Moreover, this project was an opportunity to use Flask for the first time, and build a web application that displays the output of the classifier.
 
-The classifier built was trained to recognize a human or a dog on an image, and predict the dog breed it most resembles. To do this, we first tested a neural network built from scratch before deploying a more complex Convolutional Neural Networks (CNN) that uses transfer learning. The pre-trained model used was an Inception V3 mode.
+The classifier built was trained to recognize a human or a dog on an image, and predict one of 133 dog breeds it most resembles. To do this, we first tested a neural network built from scratch before deploying a more complex Convolutional Neural Networks (CNN) that uses transfer learning. The pre-trained model used was an Inception-V3 model.
 
 The web application was then deployed onto flask. This is what it looked like and what it produced:
 ![Sample home](home.PNG)
@@ -89,14 +89,15 @@ jupyter notebook dog_app.ipynb
 
 1. First change to the `./app` directory using the terminal: ``` cd app```
 2. Run the app in the terminal: ```python app.py```
-3. Open up : ```http://127.0.0.1:5000/```
+3. Open up: ```http://127.0.0.1:5000/```
+4. Follow the instructions displayed to upload your own image.
 
 ### Additional requirements
 
 You will need to install Tensor Flow and Flask.
 
 ## Repository Structure  <a name="structure"></a>
-This repository corresponds to the dog-project folder. Its structure is displayed below. The data folder corresponds to the folder with all the dog and human images used for training. It is intentionally placed outside of this repo for storage issues.
+This repository corresponds to the ```/dog-project/``` folder. Its structure is displayed below. The ```/data/``` folder corresponds to the folder with all the dog and human images used for training. It is intentionally placed outside of this repo for storage reasons.
 
 -/data/
 
@@ -152,11 +153,11 @@ This repository corresponds to the dog-project folder. Its structure is displaye
     
     - go_bad_input.jpg
     
-The empty folders correspond to folders that are present in my home repository but that could not be exported to GitHub as they are too big in size.  Follow the instructions to download the files that should go there.
+The empty folders correspond to folders that are present in my home repository but that could not be exported to GitHub as they are too big in size. The instructions above should help you download the files that belong there.
 
 ## Analysis  <a name="analysis"></a>
 
-The model was trained to recognize 133 dog breeds using 6680 images of dogs. A further 835 images were used for testing and validation each. Analysis and results are discussed in ```jupyter notebook dog_app.ipynb```.
+The model was trained to recognize 133 dog breeds using 6680 images of dogs. A further 835 images were used for testing and validation each. Analysis and results are discussed in ```jupyter notebook dog_app.html```.
 
 ## Conclusion <a name="conclusion"></a>
 
@@ -164,18 +165,18 @@ To evaluate our models, we used accuracy as a metric. Indeed, this metric determ
 
 The first model we built from scratch performed very poorly (with an accuracy of just above 2%), and took a lot of time to train, despite only using 10 epochs. This made us reconsider our approach.
 
-We thus tested transfer learning, which uses a pre-trained model that has already spent a lot of time being fitted on many layers. This was a great way to increase performance to up to 70%.
+We thus tested transfer learning, which uses a pre-trained model that has already spent a lot of time being fitted on layers. The pre-trained VGG-16 model was a great way to increase performance to about 73%.
 
-Finally, we tested our own transfer learning method of choice, increasing the accuracy further to about 80%. This was an excellent improvement.
+Finally, we tested our own transfer learning method of choice, Inception-V3 which increased the accuracy further to about 80%. This was an excellent improvement.
 
-Nevertheless, a couple of points were identified that could be improved the future. Firstly, we could try augmenting the training set. We can augment it by randomly translating, rotating the dogs in our training dataset.
-Moreover, the hyperparemeters of the model could be tuned further. As of now, it takes a while to run the model and it is thus challenging to do this. However, in an ideal case where I had more computing power, this would be something to do.
-Finally, we could simply add more data to our training dataset. 133 images is not a lot and there are many other breeds of dogs that exist such as doodles etc.
+Nevertheless, a couple of points were identified that could be improved in the future. Firstly, we could try augmenting the training set. We can augment it by randomly translating, rotating the dogs in our training dataset.
+Moreover, the hyperparemeters of the model could be tuned further. As of now, it takes a while to run the model and it is thus challenging to do this.
+Finally, we could simply add more data to our training dataset. 133 breeds is not a lot and there are many other breeds of dogs that exist such as doodles etc.
 
 To conclude, the web application that was deployed, while far from perfect as this was my first time coding in html, was a great way to showcase how this model could be used to interact with users.
 
  ## Acknowledgments  <a name="ack"></a>
- This repository and the instruction section above was cloned from [GitHub](https://github.com/udacity/dog-project.git).
+ This repository cloned from [GitHub](https://github.com/udacity/dog-project.git) and the part of the instruction section above came from that original repo.
  Since this was my first time using Flask and using html, the following website had some great tools to help with the layout design: [W3Schools](https://www.w3schools.com/howto/).
  This [StackOverflow](https://stackoverflow.com/questions/44926465/upload-image-in-flask) page was also very useful to learn how to upload an image onto Flask.
  
