@@ -1,9 +1,9 @@
 [//]: # (Image References)
 
-[image1]: ./images/home.png "Home Page"
-[image2]: ./images/go.png "Human Output"
-[image3]: ./images/go_bad_input.png "Bad Output"
-[image4]: ./images/go_dog.png "Dog Output"
+[image1]: ./home.png "Home Page"
+[image2]: ./go.png "Human Output"
+[image3]: ./go_bad_input.png "Bad Output"
+[image4]: ./go_dog.png "Dog Output"
 
 ### Table of Contents
 
@@ -104,6 +104,7 @@ You will need to install Tensor Flow and Flask.
 This repository corresponds to the dog-project folder. Its structure is displayed below. The data folder corresponds to the folder with all the dog and human images used for training. It is intentionally placed outside of this repo for storage issues.
 
 -/data/
+
 -/dog-project/
 
     - app/
@@ -146,6 +147,8 @@ This repository corresponds to the dog-project folder. Its structure is displaye
     
     - dog_app.ipynb
     
+    - dog_app.html
+    
     - home.jpg
     
     - go.jpg
@@ -177,7 +180,7 @@ Finally, we could simply add more data to our training dataset. 133 images is no
 To conclude, the web application that was deployed, while far from perfect as this was my first time coding in html, was a great way to showcase how this model could be used to interact with users.
 
  ## Acknowledgments  <a name="ack"></a>
- This repository and the instruction section above was cloned from https://github.com/udacity/dog-project.git.
- Since this was my first time using Flask and using html, the following website had some great tools to help with the layout design: [W3Schools] https://www.w3schools.com/howto/.
- This [StackOverflow]https://stackoverflow.com/questions/44926465/upload-image-in-flask page was also very useful to learn how to upload an image onto Flask.
+ This repository and the instruction section above was cloned from [GitHub](https://github.com/udacity/dog-project.git).
+ Since this was my first time using Flask and using html, the following website had some great tools to help with the layout design: [W3Schools](https://www.w3schools.com/howto/).
+ This [StackOverflow](https://stackoverflow.com/questions/44926465/upload-image-in-flask) page was also very useful to learn how to upload an image onto Flask.
  
