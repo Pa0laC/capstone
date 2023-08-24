@@ -1,13 +1,34 @@
-{% extends "home.html" %}
-{% block title %}Results{% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Dog Breed Predictor Home Page</title>
+<link rel="stylesheet" href="static/style.css">
+</head>
 
-{% block message %}
-    <hr />
-    <h4 class="text-center">Image output</h4>
-    <p class="text-center"><i>{{query}}</i></p>
-{% endblock %}
+<body>
+  <div >
+      <h1 class="center" class="title">You inputted... </h1> 
+      <img src="{{ img_path }}" alt="User Image" width=300px height=400px>
+    </div>
+   <div >
+      {% if human== 0 %}<h1 class="center" class="title"> This dog looks like a {{ model_output }}.</h1>
 
-{% block content %}
-    <h1 class="text-center">Result {% model_output}</h1>
+      <div>
+            <img  src = "{{img_dog}}" width=300px height=400px>
+         </div>
 
-{% endblock %}
+      
+    {% elif human== 1 %}<h1 class="center" class="title"> This person looks like a {{ model_output }}.</h1>
+      
+<div>
+      <img src="{{ img_dog }}" alt="User Image" width=300px height=400px></div>
+
+     
+      
+    {% else %} <h1 class="center" class="title">This is neither a person nor a dog. Please go back and input another image </h1>
+    {% endif %}</div >
+      
+    
+        
+</body>
+</html>

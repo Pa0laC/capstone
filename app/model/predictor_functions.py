@@ -1,16 +1,21 @@
-from keras.applications.resnet50 import preprocess_input, decode_predictions
-from keras.preprocessing import image  
 import sys
-sys.path.append('..')
+import os
+sys.path.append('../static')
+sys.path.append('../../../data/dog_images/train')
+from keras.applications.resnet50 import preprocess_input, decode_predictions, ResNet50
+import keras.utils as image
+from keras.callbacks import ModelCheckpoint  
+
+from glob import glob
 from tqdm import tqdm
-from keras.applications.resnet50 import ResNet50
 import cv2   
 import numpy as np
-from keras.callbacks import ModelCheckpoint  
+import matplotlib.pyplot as plt 
+from matplotlib import image as mpimg
 from extract_bottleneck_features import *
 
 # extract pre-trained face detector
-face_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_alt.xml')
+face_cascade = cv2.CascadeClassifier('../haarcascades/haarcascade_frontalface_alt.xml')
 
 def face_detector(img_path):
     '''
@@ -70,7 +75,6 @@ def InceptionV3_predict_breed(img_path, trained_model):
     # return dog breed that is predicted by the model
     
     dog_names = [item[20:-1] for item in sorted(glob("../../data/dog_images/train/*/"))]
-    dog_names = [item[9:] for item in dog_names]
     dog_names = dog_names[np.argmax(predicted_vector)]
     
     return dog_names
@@ -78,16 +82,44 @@ def InceptionV3_predict_breed(img_path, trained_model):
 def dog_resemblance(img_path, trained_model):
     '''
     Given an image,
-    Returns predicted breed if a dog is detected
-    Returns resembling dog breed if a human is detected
+    Returns predicted breed if a dog is detected + images of dog that resembles them
+    Returns resembling dog breed if a human is detected + images of dog that resembles them
     Returns an error if neither is detected.
     '''
+    if dog_detector(img_path) :
+        human=0
+        output = InceptionV3_predict_breed(img_path, trained_model)
+        
+        # Find path of example image of output dog
+        abs_path = os.getcwd()
+        dog_dir = output[8:]
+        
+        # Clean output
+        output = output[12:]
+        return human, dog_dir, output.replace('_', ' ')
     
-    # First determine if there is a dog, human or neither
-    
-    if dog_detector(img_path):
-        return 'This dog looks like a {}'.format(InceptionV3_predict_breed(trained_model, img_path))
     if face_detector(img_path):
-        return 'This person looks like a {}'.format(InceptionV3_predict_breed(trained_model, img_path))
+        human = 1
+        output = InceptionV3_predict_breed(img_path, trained_model)
+        
+        # Find path of example image of output dog
+        abs_path = os.getcwd()
+        dog_dir = output[8:]
+        
+        # Clean output
+        output = output[12:].replace('_', ' ')
+        return human, dog_dir, output
     else:
-        return 'Neither a human nor dog'
+        return -1, '','Neither a human nor dog'
+    
+def get_image_dog_resemblance(path, image_no):
+    '''
+    Displays image_no number of images from path directory
+    '''
+    dir = os.listdir( path )
+
+    for file in dir[:image_no]:
+
+        image = mpimg.imread(path+file)
+        plt.imshow(image)
+        plt.show()
